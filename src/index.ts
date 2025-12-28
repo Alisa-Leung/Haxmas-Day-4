@@ -3,6 +3,9 @@ import { Hono } from 'hono'
 
 const app = new Hono()
 
+//check if webpage is up
+app.get("/", (c) => c.text("Beans!"))
+
 //GET
 //getTodos
 app.get("/api/todo", (c) => c.json(getTodos()))
