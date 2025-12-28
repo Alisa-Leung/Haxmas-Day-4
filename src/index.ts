@@ -9,7 +9,7 @@ app.get("/api/todo", (c) => c.json(getTodos()))
 //getCompleteTodos
 app.get("/api/todo/complete", (c) => c.json(getCompleteTodos()))
 //getIncompleteTodos
-app.get("/api/todo/incomplete", (c) => c.json(getIncompleteTodos))
+app.get("/api/todo/incomplete", (c) => c.json(getIncompleteTodos()))
 //getTodoById
 app.get("/api/todo/:id", (c) => {
   const id = Number(c.req.param("id"))
