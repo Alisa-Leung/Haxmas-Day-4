@@ -20,6 +20,7 @@ app.get("/", (c) => c.text(`
   [DELETE]  /api/todo/complete            - Delete all completed to-dos
   
   Usage Example:
+  --------------------------------------------------
   curl -X POST https://fastdeploy.deployor.dev/u/ident!A9f3Xq/To-Do%20List%20Maker/api/todo \\
        -H "Content-Type: application/json" \\
        -d '{"task": "Join Hack Club", "description": "Make cool stuff with code!"}'
