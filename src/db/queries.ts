@@ -44,17 +44,13 @@ export function createTodo(task: string, description: string=""){
 }
 
 //PATCH
-export function changeTask(id: number, task: string){
-    return db.update(todo)
-        .set({ task })
+export function update(id: number, task: string="", description: string=""){
+    const result = db.update(todo)
+        .set({ task, description })
         .where(eq(todo.id, id))
-        .run()
-}
-export function changeDescription(id: number, description: string){
-    return db.update(todo)
-        .set({ description })
-        .where (eq(todo.id, id))
-        .run()
+        .returning()
+        .get()
+    return { changes: result ? 1 : 0 }
 }
 export function toggleComplete(id: number){
     const result = db.update(todo)
@@ -74,7 +70,9 @@ export function deleteTodo(id: number){
     return { changes: result ? 1 : 0 }
 }
 export function deleteCompleteTodos(){
-    return db.delete(todo)
+    const result = db.delete(todo)
         .where(eq(todo.completed, 1))
-        .run()
+        .returning()
+        .get()
+    return { changes: result ? 1 : 0 }
 }
