@@ -4,7 +4,26 @@ import { Hono } from 'hono'
 const app = new Hono()
 
 //check if webpage is up
-app.get("/", (c) => c.text("Beans!"))
+app.get("/", (c) => c.text(`
+  🗒️ To-Do API is up and running!
+  
+  Available Endpoints:
+  --------------------------------------------------
+  [GET]     /api/todo                     - List all to-dos
+  [GET]     /api/todo/complete            - List completed to-dos
+  [GET]     /api/todo/incomplete          - List incomplete to-dos
+  [GET]     /api/todo/:id                 - Get a to-do by ID
+  [POST]    /api/todo                     - Create a new to-do
+  [PATCH]   /api/todo/:id                 - Update a to-do's task or description
+  [PATCH]   /api/todo/:id/toggleComplete  - Toggle a to-do's completion status
+  [DELETE]  /api/todo/:id                 - Delete a to-do by ID
+  [DELETE]  /api/todo/complete            - Delete all completed to-dos
+  
+  Usage Example:
+  curl -X POST https://fastdeploy.deployor.dev/u/ident!A9f3Xq/To-Do%20List%20Maker/api/todo \\
+       -H "Content-Type: application/json" \\
+       -d '{"task": "Join Hack Club", "description": "Make cool stuff with code!"}'
+  `))
 
 //GET
 //getTodos
