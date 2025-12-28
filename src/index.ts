@@ -79,4 +79,9 @@ app.delete("/api/todo/complete", (c) => {
   return c.json({ deleted: result.changes })
 })
 
-export default app
+const port = Number(process.env.PORT) || 3000
+
+export default {
+  port,
+  fetch: app.fetch,
+}
